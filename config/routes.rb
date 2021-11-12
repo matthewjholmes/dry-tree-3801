@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :doctors, only: :show
   resources :hospitals, only: :show
   resources :patient_rosters, only: :destroy
+  resources :patients, only: :index
 end
