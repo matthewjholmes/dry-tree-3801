@@ -5,6 +5,9 @@ University: <%= @doctor.university %><br>
 Hospital: <%= @doctor.hospital.name %><br><br>
 
 <h3>Patients</h3>
-<% @doctor.patients.each do |pt| %>
-  <%= pt.name %><br>
+<% @doctor.patient_rosters.each do |roster_patient| %>
+  <div id="patient-<%= roster_patient.patient.id %>">
+    <%= roster_patient.patient.name %>
+    <%= button_to 'Remove from caseload', patient_roster_path(roster_patient), method: :delete %><br>
+  </div>
 <% end %>

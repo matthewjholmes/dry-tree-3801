@@ -27,6 +27,14 @@ RSpec.describe 'doctor show page' do
       end
     end
 
-
+    it 'i see a button to remove patient from caseload' do
+      @doctor.patients.each do |patient|
+        within "#patient-#{patient.id}" do
+          click_button 'Remove from caseload'
+        end
+        expect(current_path).to eq(doctor_path(@doctor))
+        expect(page).to_not have_content(patient.name)
+      end
+    end
   end
 end
